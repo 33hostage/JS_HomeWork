@@ -203,7 +203,14 @@
 						<input style="width: 90%;" id="password" type="password" name="password" placeholder="Пароль" required>
 						<div class="togglePassword" id="togglePassword"><img class="btnPassword" src="img/solar--eye-closed-bold.svg" alt=""></div>
 					</div>
-					<span id="password-error"></span>
+					<div style="display:flex; justify-content: space-between; gap: 10px; max-width: 100%;">
+						<input style="width: 90%;" id="confirmPassword" type="password" name="confirmPassword" placeholder="Подтвердите пароль" required>
+						<div class="togglePassword" id="toggleConfirmPassword"><img class="btnPassword" src="img/solar--eye-closed-bold.svg" alt=""></div>
+					</div>
+					<div class="span__errors">
+						<span id="password-error"></span>
+						<span id="confirm-password-error"></span>
+					</div>
 					<button type="submit" class="submitBtn">Войти</button>
 				</form>
 			</div>

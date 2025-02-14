@@ -708,10 +708,6 @@ input {
 	color: #f9f9f9;
 }
 
-#password-error {
-	font-size: 20px;
-}
-
 #successMessage {
 	max-width: 540px;
 	display: flex;
@@ -734,3 +730,7 @@ input {
 	font-family: Mulish, sans-serif;
 }
 
+#password-error,
+#confirm-password-error {
+	font-size: 15px;
+}

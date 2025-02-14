@@ -4,6 +4,8 @@ const loginForm = document.getElementById('loginForm');
 const modalFade = document.querySelector('.modal-fade');
 const modal = document.querySelector('.modal-menu');
 const password = document.getElementById('password');
+const confirmPasswordInput = document.getElementById('confirmPassword');
+const passwordInput = document.getElementById('password');
 
 openModalBtn.onclick = function () {
 	modal.classList.add('modal-menu_open');
@@ -31,6 +33,14 @@ function closeModal () {
 	document.body.classList.toggle('no-scroll');
 }
 
+function validatePassword(password) {
+	const minLength = 5;
+	const hasNumber = /\d/.test(password);
+	const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+	return password.length >= minLength && hasNumber && hasSpecialChar;
+}
+
 document.getElementById('togglePassword').addEventListener('click', function() {
 	const img = this.querySelector('img');
 
@@ -43,10 +53,43 @@ document.getElementById('togglePassword').addEventListener('click', function() {
 	}
 });
 
+document.getElementById('toggleConfirmPassword').addEventListener('click', function() {
+	const img = this.querySelector('img');
+
+	if (img.src.endsWith('solar--eye-closed-bold.svg')) {
+			img.src = 'img/solar--eye-outline.svg';
+			confirmPasswordInput.type = 'text';
+	} else {
+			img.src = 'img/solar--eye-closed-bold.svg';
+			confirmPasswordInput.type = 'password';
+	}
+});
+
 const persons = [
 	{ name: 'admin', password: 'admin' },
 	{ name: 'abobus', password: 'abobus322' },
-]
+];
+
+		// Функция для проверки совпадения паролей
+function validatePasswords() {
+	const confirmPasswordError = document.getElementById('confirm-password-error');
+	const password = passwordInput.value.trim();
+	const confirmPassword = confirmPasswordInput.value.trim();
+
+	if (password !== confirmPassword) {
+			confirmPasswordError.textContent = 'Пароли не совпадают!';
+			confirmPasswordInput.classList.add('errorField');
+			return false;
+	} else {
+			confirmPasswordError.textContent = '';
+			confirmPasswordInput.classList.remove('errorField');
+			return true;
+	}
+}
+
+confirmPasswordInput.addEventListener('input', function () {
+	validatePasswords();
+});
 
 loginForm.addEventListener('submit', function (event) {
 	event.preventDefault();
@@ -56,8 +99,12 @@ loginForm.addEventListener('submit', function (event) {
 	const welcomeUser = document.getElementById('welcomeUser');
 	const modalMenuWindow = document.querySelector('.modal-menu__window')
 
+if (!validatePasswords()) {
+	return; // Останавливаем отправку формы, если пароли не совпадают
+}
+
 	const user = persons.find(person => person.name === login);
-	console.log(user)
+
 	if (!user) {
 		alert('Не удалось найти пользователя')
 		this.reset();
