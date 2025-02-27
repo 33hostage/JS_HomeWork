@@ -1,14 +1,10 @@
 async function fetchNews() {
 	const apiKey = "5c05f645b2ad46cc94434e60de2f1f0e"
-	const proxyUrl = "https://cors-anywhere.herokuapp.com/" // Прокси для обхода CORS
+	const proxyUrl = "https://api.allorigins.win/raw?url="
 	const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`
 
 	try {
-		const response = await fetch(proxyUrl + apiUrl, {
-			headers: {
-				'Origin': 'https://33hostage.github.io/JS_HomeWork/Auth'
-			},
-		})
+		const response = await fetch(proxyUrl + encodeURIComponent(apiUrl))
 		const data = await response.json()
 		console.log("Данные от API:", data)
 
