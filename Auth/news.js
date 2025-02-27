@@ -1,15 +1,19 @@
 async function fetchNews() {
 	const apiKey = "5c05f645b2ad46cc94434e60de2f1f0e"
+	const proxyUrl = "https://cors-anywhere.herokuapp.com/" // Прокси для обхода CORS
 	const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`
 
 	try {
-		const response = await fetch(apiUrl)
+		const response = await fetch(proxyUrl + apiUrl, {
+			headers: {
+				'Origin': 'https://33hostage.github.io/JS_HomeWork/Auth'
+			},
+		})
 		const data = await response.json()
 		console.log("Данные от API:", data)
 
-		// Проверяем, есть ли массив новостей в ответе
 		if (data.articles && Array.isArray(data.articles)) {
-			displayNews(data.articles) // Передаем массив новостей в функцию отображения
+			displayNews(data.articles)
 		} else {
 			console.error(
 				"Новости не найдены или неправильная структура данных:",
