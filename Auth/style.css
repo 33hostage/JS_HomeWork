@@ -734,3 +734,27 @@ input {
 #confirm-password-error {
 	font-size: 15px;
 }
+
+/* NEWS */
+
+.news-container {
+	margin: 20px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	background: grey;
+}
+.news-item {
+	margin-bottom: 15px;
+	padding: 10px;
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+.news-item h3 {
+	margin-top: 0;
+}
+
+.header__button_home {
+	margin: 20px;
+}

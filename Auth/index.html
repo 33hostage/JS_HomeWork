@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>HomeWork_Test</title>
+	<title>AUTH and NEWS</title>
 	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="style.css">
@@ -27,7 +28,7 @@
 					<li class="header__nav_items"><a href="#">Home</a></li>
 					<li class="header__nav_items"><a href="#">Features</a></li>
 					<li class="header__nav_items"><a href="#">Pricing</a></li>
-					<li class="header__nav_items"><a href="#">Blog</a></li>
+					<li class="header__nav_items"><a href="news.html">НОВОСТИ</a></li>
 				</ul>
 			</nav>
 
@@ -213,7 +214,11 @@
 					</div>
 					<button type="submit" class="submitBtn">Войти</button>
 				</form>
+				<p style="text-align: center; margin-top: 10px;">
+					Нет аккаунта? <a href="#" id="switchToRegister">Зарегистрироваться</a>
+				</p>
 			</div>
+			
 			<div id="successMessage" style="display: none;">
 				<h1 class="modalText">Вы успешно авторизовались!</h1>
 				<p>Добро пожаловать, <span id="welcomeUser"></span>!</p>
@@ -226,8 +231,3 @@
 </body>
 
 </html>
-
-<!-- 
-setTimeout(() => {
-	closeModal();
-}, 3000); -->
